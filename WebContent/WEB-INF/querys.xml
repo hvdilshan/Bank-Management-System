@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<Querys>
+	
+	
+											<!-- Account-->
+
+	<!-- Create Account table -->
+	<query id="create_account_table">
+		<![CDATA[
+			CREATE TABLE Account(
+				account_no varchar(20) not null ,
+				account_Type varchar(20) not null,
+				account_balance varchar(20) not null,
+				create_Date varchar(20) not null,
+				customer_ID varchar(20) not null,
+				
+				CONSTRAINT pk1 PRIMARY KEY (account_no)
+				
+			)
+		]]>
+	</query>
+
+	<!-- Insert account details -->
+	<query id="insert_account">
+		<![CDATA[
+		INSERT INTO Account (account_no, account_Type,account_balance, create_Date, customer_ID) VALUES (?,?,?,?,?)
+			
+		]]>
+	</query>
+	<!-- Get account details by accountNo -->
+	<query id="get_account_by_id">
+		<![CDATA[
+			SELECT *
+			FROM Account
+			WHERE account.account_no = ?
+		]]>
+	</query>
+
+	<!-- Get account all account numbers -->
+	<query id="get_account_id">
+		<![CDATA[
+			SELECT account_no
+			FROM Account
+		]]>
+	</query>
+	
+	<!-- Get accounts details -->
+	<query id="get_accounts">
+		<![CDATA[
+			SELECT *
+			FROM Account
+		]]>
+	</query>
+
+	<!-- Drop account table -->
+	<query id="drop_account">
+		<![CDATA[
+			DROP TABLE IF EXISTS Account
+		]]>
+	</query>
+
+	<!-- Delete a account -->
+	<query id="remove_account">
+		<![CDATA[
+			DELETE
+			FROM Account
+			WHERE account.account_No = ?
+		]]>
+	</query>
+
+	<!-- Update account details -->
+	<query id="update_account">
+		<![CDATA[
+			UPDATE Account as a
+			SET  a.account_Type = ?,a.account_balance = ? , a.create_Date = ?
+			WHERE a.account_NO = ?
+		]]>
+	</query>
+	
+	<!-- Update account balance -->
+	<query id="update_account_balance">
+		<![CDATA[
+			UPDATE Account as a
+			SET  a.account_balance = ?
+			WHERE a.account_NO = ?
+		]]>
+	</query>
+	
+												<!-- Customer -->
+
+	<!-- Create customer table -->
+	<query id="create_customer_table">
+		<![CDATA[
+			CREATE TABLE customer(
+				customer_ID varchar(20) not null,
+				customer_Name varchar(50) not null,
+				nic_Number varchar(20) not null,
+				mobile_Number varchar(10) not null,
+				password varchar(20) not null,
+				
+				CONSTRAINT pk2 PRIMARY KEY (customer_ID)
+			)
+		
+		]]>
+	</query>
+
+	<!-- Insert customer details -->
+	<query id="insert_customer">
+		<![CDATA[
+			INSERT INTO customer (customer_ID, customer_Name, nic_Number, mobile_Number, password) VALUES (?,?,?,?,?)
+		]]>
+	</query>
+
+	<!-- Get customer all IDs -->
+	<query id="get_customer_id">
+		<![CDATA[
+			SELECT customer_ID
+			FROM customer
+		]]>
+	</query>
+	
+	<!-- Get customer details by ID -->
+	<query id="get_customer_by_id">
+		<![CDATA[
+			SELECT *
+			FROM customer
+			WHERE customer.customer_ID = ?
+		]]>
+	</query>
+
+	<!-- Get customers all details -->
+	<query id="get_customers">
+		<![CDATA[
+			SELECT *
+			FROM customer
+		]]>
+	</query>
+
+	<!-- Drop customer table -->
+	<query id="drop_customer">
+		<![CDATA[
+			DROP TABLE IF EXISTS customer
+		]]>
+	</query>
+
+	<!-- Delete a customer -->
+	<query id="remove_customers">
+		<![CDATA[
+			DELETE
+			FROM customer
+			WHERE customer.customer_ID = ?
+		]]>
+	</query>
+
+	<!-- Update customer details -->
+	<query id="update_customer">
+		<![CDATA[
+			UPDATE customer as c
+			SET c.customer_Name = ?, c.nic_Number = ?, c.mobile_Number = ? , c.password = ?
+			WHERE c.customer_ID = ?
+		]]>
+	</query>
+	
+	<!-- Check customer -->
+	<query id="check_customer">
+		<![CDATA[
+			SELECT *
+			FROM customer c
+			WHERE c.customer_ID = ? AND c.password = ?
+		]]>
+	</query>
+										
+										<!-- Transaction -->
+										
+	<!-- Create transaction table -->
+	<query id="create_transaction_table">
+		<![CDATA[
+			CREATE TABLE transaction(
+				transaction_ID varchar(20) not null, 
+				customer_ID varchar(20) not null,
+				payFrom varchar(20) not null,
+				payTo varchar(20) not null,
+				amount varchar(10) not null,
+				
+				CONSTRAINT pk3 PRIMARY KEY (transaction_ID)
+			)
+		
+		]]>
+	</query>
+	
+	<!-- Get all transaction details -->
+	<query id="get_transactions">
+		<![CDATA[
+			SELECT *
+			FROM transaction
+		
+		]]>
+	</query>
+	
+	<!-- Insert details to transaction table -->
+	<query id = "insert_transaction">
+		<![CDATA[
+			INSERT INTO transaction (transaction_ID,customer_ID,payFrom,payTo,amount) VALUES (?,?,?,?,?)
+		]]>
+	</query>
+	
+	<!-- Get transaction by ID -->
+	<query id="get_transaction_byID">
+		<![CDATA[
+			SELECT *
+			FROM transaction
+			WHERE transaction_ID = ?
+		
+		]]>
+	</query>
+	
+	<!-- Get transaction all IDs -->
+	<query id="get_transaction_id">
+		<![CDATA[
+			SELECT transaction_ID
+			FROM transaction
+		]]>
+	</query>
+	
+	<!-- Remove transaction table -->
+	<query id="drop_transaction">
+		<![CDATA[
+			DROP TABLE IF EXISTS transaction
+		]]>
+	</query>
+	
+	<!-- Remove transaction by ID -->
+	<query id="drop_transaction_byID">
+		<![CDATA[
+			DELETE
+			FROM transaction
+			WHERE transaction.transaction_ID = ?
+		]]>
+	</query>
+	
+	<!-- Update transaction  -->
+	<query id="update_transaction">
+		<![CDATA[
+			UPDATE transaction as t
+			SET t.payFrom = ?, t.payTo = ?, t.amount = ?
+			WHERE t.transaction_ID = ?
+		]]>
+	</query>
+	
+												<!-- Feedback -->
+	
+	<!-- Create feedback Table -->
+	<query id = "Create_feedback_table">
+		<![CDATA[
+			CREATE TABLE feedback(
+				feedback_ID varchar(20) not null,
+				customer_ID varchar(20) not null,
+				date varchar(20) not null,
+				message varchar(500) not null,
+				
+				CONSTRAINT pk4 PRIMARY KEY (feedback_ID)
+			)
+		]]>
+	</query>
+	
+	<!-- Insert data to feedback -->
+	<query id = "insert_feedback">
+		<![CDATA[
+			INSERT INTO feedback (feedback_ID,customer_ID,date,message) values (?,?,?,?)
+		]]>
+	</query>
+	
+	<!-- Get feedback by id -->
+	<query id = "get_feedback_byID">
+		<![CDATA[
+			SELECT *
+			FROM feedback
+			WHERE feedback_ID = ?
+		]]>
+	</query>
+	
+	<!-- Get all feedbacks -->
+	<query id = "get_all_feedbacks">
+		<![CDATA[
+			SELECT *
+			FROM feedback
+		]]>
+	</query>
+	
+	<!-- Update feedback -->
+	<query id = "update_feedback">
+		<![CDATA[
+			UPDATE feedback as f
+			SET f.message = ?, f.date = ?
+			WHERE f.feedback_ID = ?
+		]]>
+	</query>
+	
+	<!-- Remove feedback by id -->
+	<query id = "remove_feedback_byID">
+		<![CDATA[
+			DELETE
+			FROM feedback
+			WHERE feedback.feedback_ID = ?
+		]]>
+	</query>
+	
+	<!-- Remove all feedbacks -->
+	<query id = "drop_feedback">
+		<![CDATA[
+			DROP TABLE IF EXISTS feedback
+		]]>
+	</query>
+	
+	<!-- Get feedback all IDs -->
+	<query id="get_feedback_id">
+		<![CDATA[
+			SELECT feedback_ID
+			FROM feedback
+		]]>
+	</query>
+	
+	<!-- Get feedback by customer ID -->
+	<query id="get_feedback_by_customerid">
+		<![CDATA[
+			SELECT *
+			FROM feedback f
+			where f.customer_ID = ?
+			
+		]]>
+	</query>
+</Querys>

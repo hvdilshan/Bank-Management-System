@@ -1,0 +1,73 @@
+@CHARSET "ISO-8859-1";
+
+/*mainPage styles*/
+.transaction-button{
+	background-color: yellow;
+	font-family: sans-serif;
+	font-size: 15px;
+	font-weight:bold;
+	position:absolute; 
+	top: 15em;
+	left: 50%;
+}
+
+.userProfile-button{
+	background-color: yellow;
+	font-family: sans-serif;
+	font-size: 15px;
+	font-weight:bold;
+	position:absolute; 
+	top: 18em;
+	left: 50%;
+}
+
+.feedback-button{
+	background-color: yellow;
+	font-family: sans-serif;
+	font-size: 15px;
+	font-weight:bold;
+	position:absolute; 
+	top: 21em;
+	left: 50%;
+}
+
+.logout-button{
+	background-color: yellow;
+	font-family: sans-serif;
+	font-size: 15px;
+	font-weight:bold;
+	position:absolute; 
+	top: 24em;
+	left: 50%;
+}
+.main{
+	height: 20em;
+}
+/*Add customer styles*/
+.addCustomer{
+	width:50%;
+	height: 50%;
+	background-color: aqua;
+}
+
+.add_cus_table{
+	padding:  10px;
+	font-size: 20px;
+}
+
+.add_cus_button{
+	background-color: teal;
+	font-size: 12px;
+	
+}
+.reset_cus_button{
+	background-color: teal;
+	font-size: 12px;
+}
+
+/*Customer list styles*/
+.cusList{
+	width:50%;
+	height: auto;
+	background-color: aqua;
+}
